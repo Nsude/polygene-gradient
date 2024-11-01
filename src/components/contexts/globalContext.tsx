@@ -8,6 +8,10 @@ interface Props {
   setKillAnim: React.Dispatch<React.SetStateAction<boolean>>;
   bgTheme: string;
   setBGTheme: React.Dispatch<React.SetStateAction<string>>;
+  iconFill: string;
+  setIconFill: React.Dispatch<React.SetStateAction<string>>;
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const globalContext = createContext<Props | undefined>(undefined);
@@ -30,6 +34,8 @@ const GlobalContextProvider:React.FC<PropsWithChildren>= ({children}) => {
   const [loaded, setLoaded] = useState(false);
   const [killAnim, setKillAnim] = useState(false);
   const [bgTheme, setBGTheme] = useState("blue");
+  const [iconFill, setIconFill] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <globalContext.Provider 
@@ -40,7 +46,11 @@ const GlobalContextProvider:React.FC<PropsWithChildren>= ({children}) => {
         killAnim, 
         setKillAnim, 
         bgTheme, 
-        setBGTheme
+        setBGTheme,
+        iconFill, 
+        setIconFill,
+        menuOpen, 
+        setMenuOpen
       }}
     >
       {children}

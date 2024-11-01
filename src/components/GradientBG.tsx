@@ -10,7 +10,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const GradientBG = () => {
-  const {loaded, setLoaded, bgTheme, killAnim, setBGTheme} = useGlobalContext();
+  const {
+    loaded, setLoaded, 
+    bgTheme, killAnim, 
+    setBGTheme, colors,
+    menuOpen
+  } = useGlobalContext();
   const blurOverlayRef = useRef<HTMLDivElement>(null);
 
    // change background theme 
@@ -59,12 +64,12 @@ const GradientBG = () => {
   }, [killAnim])
 
   return (
-    <div className="background-container" onClick={() => setBGTheme(["pink", "ivory"][Math.floor(Math.random() * 2)])}>
+    <div className="background-container" data-menu-open={menuOpen} onClick={() => setBGTheme(["pink", "ivory"][Math.floor(Math.random() * 2)])}>
       <div ref={blurOverlayRef} className="blur-overlay">
         <div className="overlay"></div>
         <div className="overlay"></div>
         <div className="overlay flex jc-c">
-          <Logo size={50} />
+          <Logo size={50} color={colors.ivory} />
         </div>
       </div>
       <div className="blops">

@@ -89,8 +89,8 @@ const BlurBlops = () => {
         <div className="blop"></div>
         <div className="blop"></div>
         <div className="blop"></div>
-        {/* <div className="blop"></div>
-        <div className="blop"></div> */}
+        <div className="blop"></div>
+        <div className="blop"></div> 
         {/* <div className="blop"></div> */}
       </div>
     </div>
