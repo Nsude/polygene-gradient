@@ -7,6 +7,7 @@ import { useGlobalContext } from './contexts/globalContext';
 import Logo from '../assets/icons/Logo';
 import { polygonAnimDuration } from '../assets/shapes/Polygon';
 import MenuIcon from '../assets/icons/MenuIcon';
+import { scrambleText } from './animations-helpers/ScrambleText';
 
 const Menu = () => {
   const detailsRef = useRef<HTMLHeadingElement | null>(null);
@@ -65,7 +66,11 @@ const Menu = () => {
         duration: .4
       })
       
-      gsap.to(".menu-container .details", {opacity: 0, duration: .4, display: "none"});
+      gsap.to(".menu-container .details", {
+        opacity: 0, 
+        duration: .4, 
+        display: "none"
+      });
 
       const d = .4;
       // Logo
@@ -87,42 +92,79 @@ const Menu = () => {
         transform: "translateY(0)",
         opacity: 1,
         duration: d,
-        stagger: .1,
+        stagger: .02,
         delay: polygonAnimDuration
       })
-
-      //TODOL Delete if not used
-      // // show dotted line
-      // document.querySelector(".menu-container .controls")?.classList.add("show-after");
     }
 
   }, [loaded])
 
   useCustomEffect(() => {
     const shape = document.querySelector(".menu-container .shape");
+    const menuItems = ".menu-items .frame :first-child";
     const duration = .4;
     const delay = .2;
     if (menuOpen) {
       gsap.to(shape, {
-        height: 500, 
+        height: 500,
         duration,
+        ease: "power2.out",
         delay
       })
       
+      // displays the dashed line right above the main menu
       shape?.classList.remove("remove-delay");
       shape?.classList.add("show-after");
+
+      // animate menu items 
+      gsap.to(menuItems, {
+        transform: "translateY(0)", 
+        opacity: 1,
+        duration: .6,
+        delay: .3,
+        stagger: .02
+      })
+      
     } else {
       gsap.to(shape, {
         height: 55, 
         duration,
+        ease: "power2.out",
         delay
       })
 
+      // hides the dashed line right above the main menu
       shape?.classList.add("remove-delay");
       shape?.classList.remove("show-after");
+
+      // animate menu items 
+      // gsap.set(menuItems, {opacity: 0})
+      gsap.to(menuItems, {
+        transform: "translateY(100%)", 
+        opacity: 0,
+        duration: .6,
+        stagger: {
+          each: .02,
+          from: "end"
+        }
+      })
     }
 
   }, [menuOpen])
+
+  useCustomEffect(() => {
+    const toAnim = document.querySelectorAll(".menu-items .frame .item p:first-child");
+    if (!toAnim) return;
+
+    let finalText: string;
+    toAnim.forEach((e) => {
+      let elem = e as HTMLParagraphElement;
+      elem.parentElement?.addEventListener("mouseenter", () => {
+        finalText = elem.textContent || "";
+        scrambleText(elem, finalText, 350, "GENEY")
+      })
+    })
+  })
 
   const handleMenu = () => {
     setMenuOpen((prev) => !prev);
@@ -163,26 +205,33 @@ const Menu = () => {
 
         {/* MENU ITEMs */}
         <div className="menu-items">
-          <div className="item">
-            <p>01</p>
-            <p>Technology</p>
+          <div className="frame">
+            <div className="item">
+              <p>01</p>
+              <p>Technology</p>
+            </div>
           </div>
-          <div className="item">
-            <p>02</p>
-            <p>Services</p>
-          </div>
-          <div className="item">
-            <p>03</p>
-            <p>Partners</p>
-          </div>
-          <div className="item">
-            <p>04</p>
-            <p>Community</p>
-          </div>
-        </div>
 
-        <div className="ad-display">
-          
+          <div className="frame">
+            <div className="item">
+              <p>02</p>
+              <p>Services</p>
+            </div>
+          </div>
+
+          <div className="frame">
+            <div className="item">
+              <p>03</p>
+              <p>Partners</p>
+            </div>
+          </div>
+
+          <div className="frame">
+            <div className="item">
+              <p>04</p>
+              <p>Reach Out</p>
+            </div>
+          </div>
         </div>
 
         <div className="bottom">
