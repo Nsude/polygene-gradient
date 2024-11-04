@@ -3,16 +3,6 @@
 
 .polygon-icon-container {
   overflow: hidden;
-  position: relative;
-  z-index: 900;
-
-  .logo {
-    position: fixed;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-
-  }
 }
 
 .polygon-icon {

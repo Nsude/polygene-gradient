@@ -116,7 +116,7 @@ const Menu = () => {
         y: 0
       }, {
         y: -100,
-        duration: .6,
+        duration,
         delay
       })
 

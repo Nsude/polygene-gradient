@@ -1,6 +1,7 @@
 @use "variables" as *;
 
 .loading-screen-container {
+  position: fixed;
   text-align: center;
   height: 100vh;
   width: 100%;

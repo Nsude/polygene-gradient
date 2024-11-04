@@ -5,10 +5,18 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 100vh;
+  height: 100%;
   right: 0;
   z-index: 900;
   transition: backdrop-filter 400ms linear;
+
+  .logo {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
 
   .blur-overlay {
     position: relative;

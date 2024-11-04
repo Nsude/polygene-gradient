@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import useCustomEffect from "../../components/hooks/useCustomEffect";
 import { useGlobalContext } from "../../components/contexts/globalContext";
-import Logo from "../icons/Logo";
 
 interface Props {
   size?: number,
@@ -11,7 +10,7 @@ interface Props {
 export const polygonAnimDuration = .4;
 
 const Polygon:React.FC<Props> = ({size}) => {
-  const {killAnim, setKillAnim, loaded} = useGlobalContext(); 
+  const {killAnim, setKillAnim} = useGlobalContext(); 
   const [progress, setProgress] = useState("000");
   const pathRef = useRef<SVGPathElement | null>(null);
   const animationRef = useRef<GSAPTween>();
@@ -37,7 +36,7 @@ const Polygon:React.FC<Props> = ({size}) => {
   })
 
   // Update polygon on load completed
-  const logoRef = useRef<HTMLDivElement>(null);
+  
   const secondPathRef = useRef<SVGPathElement | null>(null);
   useCustomEffect(() => {
     if (!killAnim || !pathRef.current) return;
@@ -69,16 +68,6 @@ const Polygon:React.FC<Props> = ({size}) => {
 
   }, [killAnim])
 
-  // animate logo in
-  useCustomEffect(() => {
-    if (!loaded) return;
-    gsap.to(logoRef.current, {
-      top: 20,
-      duration: .4,
-    })
-
-  }, [loaded])
-
   // update progress
   useCustomEffect(() => {
     let count = 0;
@@ -98,9 +87,6 @@ const Polygon:React.FC<Props> = ({size}) => {
 
   return (
     <div className="polygon-icon-container">
-      <div ref={logoRef} className="logo">
-        <Logo />
-      </div>
       <div className="polygon-icon">
         <p>{progress}</p>
         <svg style={{overflow: "visible"}} width={size ? (size - 18): 120} height={size || 138} viewBox="0 0 120 138" fill="none" xmlns="http://www.w3.org/2000/svg">

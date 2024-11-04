@@ -5,7 +5,7 @@ body {
   font-size: $body-copy;
   letter-spacing: 0.02ch;
   font-family: "MontRegular";
-  overflow: hidden;
+  // overflow-y: hidden;
   margin: 0;
   color: $black;
 }
@@ -70,5 +70,16 @@ body a {
 
   &.cg-15 {
     column-gap: 15px;
+  }
+}
+
+// hide scrollbar
+*.hide-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

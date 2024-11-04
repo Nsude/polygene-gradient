@@ -1,7 +1,7 @@
 @use "variables" as *;
 
 .menu-container {
-  position: absolute;
+  position: fixed;
   bottom: 70px;
   left: 30px;
   display: grid;

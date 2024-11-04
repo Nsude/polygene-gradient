@@ -63,8 +63,22 @@ const GradientBG = () => {
     })
   }, [killAnim])
 
+  const logoRef = useRef<HTMLDivElement>(null);
+   // animate logo in
+   useCustomEffect(() => {
+    if (!loaded) return;
+    gsap.to(logoRef.current, {
+      top: 20,
+      duration: .4,
+    })
+
+  }, [loaded])
+
   return (
     <div className="background-container" data-menu-open={menuOpen} onClick={() => setBGTheme(["pink", "cyan"][Math.floor(Math.random() * 2)])}>
+      <div ref={logoRef} className="logo">
+        <Logo />
+      </div>
       <div ref={blurOverlayRef} className="blur-overlay">
         <div className="overlay"></div>
         <div className="overlay"></div>

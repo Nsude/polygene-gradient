@@ -7,7 +7,21 @@ import { changeBGTheme } from "./components/utils"
 
 
 function App() {
-  const {bgTheme, loaded} = useGlobalContext();
+  const {bgTheme, loaded, setBGTheme} = useGlobalContext();
+
+  useCustomEffect(() => {
+    window.addEventListener("scroll", () => {
+      const scrollWidth = document.documentElement.scrollHeight / 5;
+      const scroll = document.documentElement.scrollTop;
+      if (scroll <= scrollWidth) {
+        setBGTheme("blue")
+      } else if (scroll > scrollWidth && scroll < scrollWidth * 2) {
+        setBGTheme("cyan")
+      } else if (scroll > scrollWidth * 2) {
+        setBGTheme("pink")
+      }
+    })
+  })
 
   useCustomEffect(() => {
     if (!loaded) return;
