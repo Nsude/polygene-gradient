@@ -39,6 +39,18 @@
     justify-content: space-around;
   }
 
+  .menu-text-con {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .close-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(100%);
+  }
+
   .controls p {
     font-size: $title;
   }
@@ -47,8 +59,8 @@
     overflow: hidden;
   }
 
-  .controls .frame :nth-child(1), 
-  .controls .frame :nth-child(2), 
+  .controls .frame .animate-in, 
+  .controls .frame .animate-in, 
   .texts .frame :nth-child(1) {
     opacity: 0;
     transform: translateY(100%);

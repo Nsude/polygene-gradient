@@ -26,7 +26,7 @@ const BlurBlops = () => {
       repeat: -1,
       yoyo: true,
       opacity: 1,
-      delay: gsap.utils.random(0, 2),
+      delay: gsap.utils.random(0, 2)
     }});
 
     tl.fromTo(".blops .blop",
@@ -41,21 +41,6 @@ const BlurBlops = () => {
         ease: "power1.inOut"
       }
     );
-    
-    tl.to(".blops .blop", {
-      left: gsap.utils.random(0, 10),
-      scaleX: () => gsap.utils.random(1, 1.5), // Stretch slightly in X direction
-      scaleY: () => gsap.utils.random(1, 3), // Compress slightly in Y direction
-      x: () => gsap.utils.random(0, window.innerWidth),
-      y: () => gsap.utils.random(0, window.innerHeight),
-      skewX: () => gsap.utils.random(-10, 20), // Apply slight skew for flow effect
-      skewY: () => gsap.utils.random(-10, 20),
-    })
-    .to(".blops .blop", {
-      opacity: gsap.utils.random(0.7, 1), 
-      duration: 2,
-      ease: "power1.inOut"
-    });
 
     randomiseMove(tl);
     randomiseMove(tl);
@@ -69,11 +54,11 @@ const BlurBlops = () => {
   const randomiseMove = (tl: GSAPTimeline) => {
     return tl.to(".blops .blop", {
       left: gsap.utils.random(0, 10),
-      scaleX: () => gsap.utils.random(1, 3), // Stretch slightly in X direction
-      scaleY: () => gsap.utils.random(0.8, 2), // Compress slightly in Y direction
-      x: () => gsap.utils.random(0, window.innerWidth),
-      y: () => gsap.utils.random(0, window.innerHeight),
-      skewX: () => gsap.utils.random(-10, 20), // Apply slight skew for flow effect
+      scaleX: () => gsap.utils.random(1, 5), // Stretch slightly in X direction
+      scaleY: () => gsap.utils.random(0.8, 4), // Compress slightly in Y direction
+      x: () => gsap.utils.random(-50, window.innerWidth),
+      y: () => gsap.utils.random(-20, window.innerHeight),
+      skewX: () => gsap.utils.random(-10, 25), // Apply slight skew for flow effect
       skewY: () => gsap.utils.random(-10, 20),
     })
     .to(".blops .blop", {
@@ -89,9 +74,6 @@ const BlurBlops = () => {
         <div className="blop"></div>
         <div className="blop"></div>
         <div className="blop"></div>
-        <div className="blop"></div>
-        <div className="blop"></div> 
-        {/* <div className="blop"></div> */}
       </div>
     </div>
   )

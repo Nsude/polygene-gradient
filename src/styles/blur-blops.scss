@@ -22,7 +22,7 @@
     width: 200px; 
     height: 200px; 
     border-radius: 30%;
-    filter: blur(20px);
+    filter: blur(40px);
     opacity: 1; 
     transform-origin: center;
     mix-blend-mode: luminosity;
@@ -46,5 +46,11 @@
   .blop.ivory-bg {
     background: radial-gradient(circle, rgba($color: $g-ivory-blop1, $alpha: 1) 63%, rgb(236, 182, 32), rgba($color: $g-ivory-blop2, $alpha: 1));
     mix-blend-mode: multiply;
+  }
+
+  .blop.cyan-bg {
+    background: radial-gradient(circle, rgba($color: $g-cyan-blop1, $alpha: 1) 20%, rgba($color: $g-cyan-blop2, $alpha: 1));
+    mix-blend-mode: multiply;
+    filter: blur(50px);
   }
 }

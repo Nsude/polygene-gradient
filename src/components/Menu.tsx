@@ -84,8 +84,7 @@ const Menu = () => {
 
       // menu texts and icon
       const menuText = [
-        ".controls .frame :nth-child(1)", 
-        ".controls .frame :nth-child(2)", 
+        ".controls .frame .animate-in", 
         ".texts .frame :nth-child(1)"
       ]
       gsap.to(menuText, {
@@ -111,6 +110,22 @@ const Menu = () => {
         ease: "power2.out",
         delay
       })
+
+      // switch menu text 
+      gsap.fromTo(".menu .open-text", {
+        y: 0
+      }, {
+        y: -100,
+        duration: .6,
+        delay
+      })
+
+      gsap.fromTo(".menu .close-text", {
+        y: 100
+      }, {
+        y: 0,
+        duration
+      })
       
       // displays the dashed line right above the main menu
       shape?.classList.remove("remove-delay");
@@ -130,6 +145,22 @@ const Menu = () => {
         height: 55, 
         duration,
         ease: "power2.out",
+        delay
+      })
+
+      // switch menu text 
+      gsap.fromTo(".menu .open-text", {
+        y: -100
+      }, {
+        y: 0,
+        duration
+      })
+
+      gsap.fromTo(".menu .close-text", {
+        y: 0
+      }, {
+        y: 100,
+        duration,
         delay
       })
 
@@ -178,10 +209,13 @@ const Menu = () => {
       <div className="menu">
         <div className="controls flex">
           <button onClick={() => handleMenu()} className="frame flex cg-5">
-            <div className="menu-icon">
+            <div className="menu-icon animate-in">
               <MenuIcon size={18} color={colors.black} />
             </div>
-            <p>Menu</p>
+            <div className="menu-text-con animate-in">
+              <p className="open-text">Menu</p>
+              <p className="close-text">Close</p>
+            </div>
           </button>
         </div>
         <div className="texts">

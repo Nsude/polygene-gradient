@@ -64,7 +64,7 @@ const GradientBG = () => {
   }, [killAnim])
 
   return (
-    <div className="background-container" data-menu-open={menuOpen} onClick={() => setBGTheme(["pink", "ivory"][Math.floor(Math.random() * 2)])}>
+    <div className="background-container" data-menu-open={menuOpen} onClick={() => setBGTheme(["pink", "cyan"][Math.floor(Math.random() * 2)])}>
       <div ref={blurOverlayRef} className="blur-overlay">
         <div className="overlay"></div>
         <div className="overlay"></div>
