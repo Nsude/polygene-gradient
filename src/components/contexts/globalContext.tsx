@@ -20,6 +20,8 @@ interface Props {
   setIconFill: React.Dispatch<React.SetStateAction<string>>;
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  pageTheme: string;
+  setPageTheme: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const globalContext = createContext<Props | undefined>(undefined);
@@ -45,6 +47,7 @@ const GlobalContextProvider:React.FC<PropsWithChildren>= ({children}) => {
   const [bgTheme, setBGTheme] = useState("blue");
   const [iconFill, setIconFill] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pageTheme, setPageTheme] = useState("light");
 
   return (
     <globalContext.Provider 
@@ -59,7 +62,9 @@ const GlobalContextProvider:React.FC<PropsWithChildren>= ({children}) => {
         iconFill, 
         setIconFill,
         menuOpen, 
-        setMenuOpen
+        setMenuOpen,
+        pageTheme,
+        setPageTheme
       }}
     >
       {children}

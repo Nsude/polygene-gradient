@@ -1,7 +1,7 @@
 import {gsap} from "gsap"
 import useMousePos from "./hooks/useMousePos";
 import { useGlobalContext } from "./contexts/globalContext"; 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import useCustomEffect from "./hooks/useCustomEffect";
 import LinkArrowIcon from "../assets/icons/LinkArrowIcon";
 
@@ -12,11 +12,12 @@ interface Props {
   overlay?: string, // overlay color
   fg?: string, // text color after overlay
   defaultColor?: string //default text color
-  iconFill?: string
+  iconFill?: string, // sets the link icon fill
+  noBg?: boolean, // bg or no-bg
 }
 
 const ButtonSolidOverlay:React.FC<Props> = ({
-  arrowIcon, text, bg, overlay, fg, defaultColor, iconFill
+  arrowIcon, text, bg, overlay, fg, defaultColor, iconFill, noBg
 }) => {
   const spanRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
@@ -33,6 +34,11 @@ const ButtonSolidOverlay:React.FC<Props> = ({
     bg ? buttonRef.current.style.setProperty("--bg", `${bg}`) : "";
     fg ? buttonRef.current.style.setProperty("--fg", `${fg}`) : "";
     overlay ? buttonRef.current.style.setProperty("--overlay", `${overlay}`) : "";
+
+    // set bg status
+    if (!noBg) return;
+    buttonRef.current.classList.add("no-bg")
+
   }, [])
 
   const getRelativePos = () => {

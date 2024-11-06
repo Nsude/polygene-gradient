@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { IconProps } from '../../components/utils';
+import { IconProps } from '../../components/utils/utils';
 import { useGlobalContext } from '../../components/contexts/globalContext';
 import useCustomEffect from '../../components/hooks/useCustomEffect';
 import gsap from "gsap";

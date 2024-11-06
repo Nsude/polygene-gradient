@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useGlobalContext } from './contexts/globalContext'
 import useCustomEffect from './hooks/useCustomEffect'
 import BlurBlops from './BlurBlops';
-import { changeBGTheme } from './utils';
+import { changeBGTheme } from './utils/utils';
 import gsap from "gsap"
 import Logo from '../assets/icons/Logo';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -14,7 +14,7 @@ const GradientBG = () => {
     loaded, setLoaded, 
     bgTheme, killAnim, 
     setBGTheme, colors,
-    menuOpen
+    menuOpen, pageTheme
   } = useGlobalContext();
   const blurOverlayRef = useRef<HTMLDivElement>(null);
 
@@ -79,7 +79,7 @@ const GradientBG = () => {
       <div ref={logoRef} className="logo">
         <Logo />
       </div>
-      <div ref={blurOverlayRef} className="blur-overlay">
+      <div ref={blurOverlayRef} data-page-theme={pageTheme} className="blur-overlay">
         <div className="overlay"></div>
         <div className="overlay"></div>
         <div className="overlay flex jc-c">

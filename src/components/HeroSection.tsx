@@ -8,10 +8,44 @@ import { polygonAnimDuration } from "../assets/shapes/Polygon";
 
 const HeroSection = () => {
   const [time, setTime] = useState("");
-  const {colors, killAnim} = useGlobalContext();
+  const {
+    colors, killAnim, menuOpen, setMenuOpen, pageTheme, setPageTheme
+  } = useGlobalContext();
   const [iconFill, setIconFill] = useState(colors.ivory);
   const container = useRef<HTMLDivElement>(null);
 
+  // close menu when user clicks outside 
+  useCustomEffect(() => {
+    if (!container.current) return
+    const handleClick = () => {
+      setMenuOpen(false);
+    }
+    container.current.addEventListener("click", handleClick);
+
+    return (() => {
+      removeEventListener("click", handleClick);
+    })
+  })
+
+  // blur on menu open
+  useCustomEffect(() => {
+    if (menuOpen) {
+      gsap.to(container.current, {
+        filter: "blur(5px)",
+        duration: 1,
+        delay: .2
+      })
+    } else {
+      gsap.to(container.current, {
+        filter: "blur(0px)",
+        duration: .4,
+        delay: .2
+      })
+    }
+
+  }, [menuOpen])
+
+  // hide all content until killAnim is true
   useCustomEffect(() => {
     if (!killAnim) return;
     gsap.to(container.current, {
@@ -39,11 +73,30 @@ const HeroSection = () => {
 
   })
 
+  const switchTheme = () => {
+    if (pageTheme === "light") {
+      setPageTheme("dark");
+    } else {
+      setPageTheme("light");
+    }
+  }
+
+  useCustomEffect(() => {
+    if (pageTheme === "light") {
+      // theme icon bg
+      document.documentElement.style.setProperty("--bg", colors.black);
+    } else {
+      // theme icon bg
+      document.documentElement.style.setProperty("--bg", colors.ivory);
+    }
+
+  }, [pageTheme])
+
   return (
     <div ref={container} className="hero-section-container">
       <div className="nav-area flex jc-sb">
         <p>POLYGENE.<span>PRO</span></p>
-        <div className="theme"></div>
+        <button onClick={() => switchTheme()} className="theme"></button>
       </div>
 
       {/* Top Right */}
@@ -101,7 +154,15 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="bottom">
-            <button className="sec-btn">Request Demo</button>
+            <div className="sec-btn">
+              <ButtonSolidOverlay 
+                text="REQUEST DEMO" 
+                arrowIcon={true}
+                defaultColor={colors.ivory} 
+                iconFill={colors.ivory}
+                noBg={true}
+              />
+            </div>
           </div>
         </div>
       </div>

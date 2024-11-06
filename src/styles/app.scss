@@ -16,6 +16,22 @@
   &.cyan-bg {
     background-color: $g-cyan-body;
   }
+
+  // dark bg
+  &[data-page-theme="dark"] {
+  
+    &.pink-bg {
+      background-color: #29191f;
+    }
+
+    &.cyan-bg {
+      background-color: #0b1216;
+    }
+
+    &.blue-bg {
+      background-color: #212127;
+    }
+  }
   
 }
 

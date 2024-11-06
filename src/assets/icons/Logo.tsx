@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useGlobalContext } from '../../components/contexts/globalContext'
 import useCustomEffect from '../../components/hooks/useCustomEffect';
-import { IconProps } from '../../components/utils';
+import { IconProps } from '../../components/utils/utils';
 
 const Logo:React.FC<IconProps> = ({size, color}) => {
   const {colors, bgTheme, iconFill, setIconFill} = useGlobalContext();

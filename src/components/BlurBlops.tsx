@@ -1,10 +1,10 @@
 import gsap from "gsap"
 import useCustomEffect from './hooks/useCustomEffect'
 import { useGlobalContext } from './contexts/globalContext'
-import { changeBGTheme } from "./utils";
+import { changeBGTheme } from "./utils/utils";
 
 const BlurBlops = () => {
-  const {loaded, bgTheme} = useGlobalContext();
+  const {loaded, bgTheme, pageTheme} = useGlobalContext();
 
   // change blop theme 
   useCustomEffect(() => {
@@ -69,7 +69,7 @@ const BlurBlops = () => {
   }
 
   return (
-    <div className="blur-blops-container">
+    <div data-page-theme={pageTheme} className="blur-blops-container">
       <div className="blops">
         <div className="blop"></div>
         <div className="blop"></div>

@@ -5,11 +5,11 @@ import useCustomEffect from "./components/hooks/useCustomEffect"
 import LoadingScreen from "./components/LoadingScreen"
 import Menu from "./components/Menu"
 import CursorTracker from "./components/utils/CursorTracker"
-import { changeBGTheme } from "./components/utils"
+import { changeBGTheme } from "./components/utils/utils"
 
 
 function App() {
-  const {bgTheme, loaded, setBGTheme} = useGlobalContext();
+  const {bgTheme, loaded, setBGTheme, pageTheme} = useGlobalContext();
 
   useCustomEffect(() => {
     window.addEventListener("scroll", () => {
@@ -31,7 +31,7 @@ function App() {
   }, [bgTheme, loaded])
 
   return (
-    <div className="app-container">
+    <div data-page-theme={pageTheme} className="app-container">
       <CursorTracker />
       <GradientBG />
       <LoadingScreen />

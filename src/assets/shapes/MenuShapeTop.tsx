@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useGlobalContext } from '../../components/contexts/globalContext'
 import useCustomEffect from '../../components/hooks/useCustomEffect'
-import { scaleMenuSvg } from '../../components/utils'
+import { scaleMenuSvg } from '../../components/utils/utils'
 
 export interface ShapeProps {
   fill?: string

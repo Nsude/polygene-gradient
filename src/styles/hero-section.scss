@@ -11,7 +11,9 @@
   color: $ivory;
   text-transform: uppercase;
   opacity: 0;
-
+  font-family: "MontRegular";
+  font-weight: 100;
+  
   p {
     font-size: $body-copy;
     letter-spacing: 0.03ch;
@@ -39,10 +41,24 @@
   }
 
   .theme {
+    position: relative;
     width: 15px;
     aspect-ratio: 1 / 1;
     background-color: $ivory;
     border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .theme::after {
+    content: "";
+    position: absolute;
+    height: 11.5px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--bg, $black);
   }
 
   // ====== top right ======

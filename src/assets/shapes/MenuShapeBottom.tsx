@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGlobalContext } from '../../components/contexts/globalContext';
 import { ShapeProps } from './MenuShapeTop';
 import useCustomEffect from '../../components/hooks/useCustomEffect';
-import { scaleMenuSvg } from '../../components/utils';
+import { scaleMenuSvg } from '../../components/utils/utils';
 
 const MenuShapeBottom:React.FC<ShapeProps> = ({fill}) => {
   const {loaded} = useGlobalContext();

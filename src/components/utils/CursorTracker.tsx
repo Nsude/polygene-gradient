@@ -23,7 +23,7 @@ const CursorTracker = () => {
   };
 
   const resetTracker = () => {
-    setTrackerSize(12);
+    setTrackerSize(8);
     gsap.to(".cursor-tracker", {
       opacity: 1,
       duration: 0,
