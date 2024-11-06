@@ -1,8 +1,10 @@
 import { useGlobalContext } from "./components/contexts/globalContext"
 import GradientBG from "./components/GradientBG"
+import HeroSection from "./components/HeroSection"
 import useCustomEffect from "./components/hooks/useCustomEffect"
 import LoadingScreen from "./components/LoadingScreen"
 import Menu from "./components/Menu"
+import CursorTracker from "./components/utils/CursorTracker"
 import { changeBGTheme } from "./components/utils"
 
 
@@ -30,9 +32,11 @@ function App() {
 
   return (
     <div className="app-container">
+      <CursorTracker />
       <GradientBG />
       <LoadingScreen />
       <Menu />
+      <HeroSection />
     </div>
   )
 }

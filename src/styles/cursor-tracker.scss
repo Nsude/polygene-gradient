@@ -1,0 +1,14 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.cursor-tracker {
+  // display: none;
+  position: fixed;
+  aspect-ratio: 1 / 1;
+  background-color: $ivory;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  z-index: 9999999;
+  pointer-events: none;
+}

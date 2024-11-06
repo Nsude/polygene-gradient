@@ -1,0 +1,168 @@
+@use "variables" as *;
+
+.hero-section-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%; 
+  z-index: 900;
+  padding: 25px 30px;
+  color: $ivory;
+  text-transform: uppercase;
+  opacity: 0;
+
+  p {
+    font-size: $body-copy;
+    letter-spacing: 0.03ch;
+  }
+
+  h1 {
+    font-family: "MontRegular", Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 10vw;
+    letter-spacing: -0.03ch;
+    line-height: .75;
+  }
+
+  button {
+    color: $ivory;
+  }
+
+  .nav-area p {
+    font-family: "MontBold";
+
+    span {
+      font-style: italic;
+      font-family: "MontMedium";
+    }
+  }
+
+  .theme {
+    width: 15px;
+    aspect-ratio: 1 / 1;
+    background-color: $ivory;
+    border-radius: 10px;
+  }
+
+  // ====== top right ======
+  .top-right-con {
+    position: absolute;
+    right: 30px;
+    top: 150px;
+    width: 50%;
+    min-height: fit-content;
+    align-items: flex-start;
+
+    .left {
+      width: 33%;
+      align-items: flex-start;
+      padding-top: 5px;
+    }
+
+    .left .contents {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 7.57vw;
+    }
+  }
+
+
+  // ===== center =====
+  .center-con {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    top: 50%;
+    align-items: flex-start;
+
+    .left {
+      width: 40%;
+      column-gap: 30px;
+      align-items: flex-start;
+    }
+
+    .left p:not(:last-child) {
+      margin-top: 5px;
+    }
+
+    .title {
+      align-items: flex-start;
+    }
+
+    .title p {
+      font-size: $header;
+    }
+
+    .e {
+      line-height: .75;
+      margin-left: -10px;
+    }
+
+    .details {
+      width: 50%;
+    }
+
+    .details p:nth-child(2) {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+    }
+
+    .right, .top,
+    .first {
+      align-items: flex-start;
+    }
+
+    .right {
+      width: 52%;
+    }
+
+    .first {
+      width: 44%;
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 7.57vw;
+    }
+
+    .last {
+      text-align: right;
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: 0;
+    }
+
+  }
+
+
+  .bottom-right-con {
+    position: absolute;
+    right: 45px;
+    bottom: 100px;
+    width: 50%;
+    align-items: flex-start;
+    column-gap: 10px;
+
+    p {
+      font-size: $header;
+    }
+  }
+
+
+  // ====== Bottom ======
+  .bottom-con {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 50%;
+  }
+  
+}
