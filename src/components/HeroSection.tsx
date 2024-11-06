@@ -92,6 +92,28 @@ const HeroSection = () => {
 
   }, [pageTheme])
 
+  // set left values for aligning the 
+  // top-right div to the logo pos
+  // the center-con middle div to the beyn.d text
+  useCustomEffect(() => {
+    const setLefts = () => {
+      const logo = document.querySelector(".background-container .logo") as HTMLDivElement;
+      const logoLeft = logo.getBoundingClientRect().left;
+      document.documentElement.style.setProperty("--logo-left", `${logoLeft}px`);
+
+      const beynd = document.querySelector(".top-right-con .right") as HTMLDivElement;
+      const beyndLeft = beynd.getBoundingClientRect().left;
+      const first = document.querySelector(".center-con .right .first") as HTMLDivElement;
+      const firstLeft = first.getBoundingClientRect().left;
+
+      const middleLeft = beyndLeft - firstLeft;
+      document.documentElement.style.setProperty("--middle-left", `${middleLeft}px`) 
+    }
+
+    window.addEventListener("resize", setLefts);
+    setLefts();
+  })
+
   return (
     <div ref={container} className="hero-section-container">
       <div className="nav-area flex jc-sb">

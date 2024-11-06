@@ -74,7 +74,7 @@ const Polygon:React.FC<Props> = ({size}) => {
     const countInterval = setInterval(() => {
       if (count > 99) return clearInterval(countInterval);
       count += 1;
-    }, 10);
+    }, 5);
 
     const progressInterval = setInterval(() => {
       setProgress(count.toString().padStart(3, "0"));

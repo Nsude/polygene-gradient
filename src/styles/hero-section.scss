@@ -66,7 +66,7 @@
     position: absolute;
     right: 30px;
     top: 150px;
-    width: 50%;
+    left: var(--logo-left, 50%);
     min-height: fit-content;
     align-items: flex-start;
 
@@ -133,11 +133,15 @@
     }
 
     .right {
-      width: 52%;
+      position: absolute;
+      left: var(--logo-left, 50%);
+      right: 0;
+      transform: translateX(-30px);
     }
 
     .first {
-      width: 44%;
+      height: 7.57vw;
+      width: 55%;
     }
 
     .middle {
@@ -145,6 +149,9 @@
       flex-direction: column;
       justify-content: space-between;
       height: 7.57vw;
+      position: absolute;
+      left: var(--middle-left, 50%);
+      transform: translateX(10px)
     }
 
     .last {
@@ -161,11 +168,13 @@
 
   .bottom-right-con {
     position: absolute;
+    left: var(--logo-left);
     right: 45px;
     bottom: 100px;
     width: 50%;
     align-items: flex-start;
     column-gap: 10px;
+    transform: translateX(-10px);
 
     p {
       font-size: $header;
@@ -179,6 +188,7 @@
     right: 30px;
     bottom: 30px;
     width: 50%;
+    left: var(--logo-left);
   }
   
 }
